@@ -23,7 +23,7 @@ public class UserController {
        return service.creatUser(user);
     }
 
-    @GetMapping("/email")
+    @GetMapping("/login")
     public Optional<User> FindByEmail(String Email){
         return service.getUserByEmail(Email);
     }
