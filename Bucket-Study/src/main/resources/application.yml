@@ -1,0 +1,10 @@
+
+
+#Database configuration on mongodb
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://ganpatstudy:<db_password>@cluster.cexxxla.mongodb.net/?retryWrites=true&w=majority&appName=Cluster
+      database: task
+
