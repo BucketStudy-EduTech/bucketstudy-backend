@@ -52,5 +52,8 @@ public class CourseService {
 
    //Delete the course
     //only admin can do this
-
+    public String deleteCourse(int courseId){
+        courseRepo.deleteById(courseId);
+        return "Course Deleted Successfully";
+    }
 }
