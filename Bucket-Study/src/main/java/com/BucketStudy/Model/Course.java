@@ -1,6 +1,6 @@
 package com.BucketStudy.Model;
 
-import org.bson.types.ObjectId;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,20 +8,24 @@ import java.util.List;
 
 @Document(collection = "courses")
 public class Course {
+
     @Id
-    private int courseId;
+    private int id;
+
     private String title;
     private String description;
-    private int duration; //in hours
-    private ObjectId instructor;
+    private int duration; // in hours
+    private int instructor;
     private List<String> skills;
     private double price;
     private List<String> videos;
-    private List<ObjectId> projects;
+    private List<Integer> projects;
 
-    public Course(int courseId, String title, String description, int duration, ObjectId instructor,
-                  List<String> skills, double price, List<String> videos, List<ObjectId> projects) {
-        this.courseId = courseId;
+    // --- Constructors ---
+    public Course() {}
+
+    public Course(String title, String description, int duration, int instructor,
+                  List<String> skills, double price, List<String> videos, List<Integer> projects) {
         this.title = title;
         this.description = description;
         this.duration = duration;
@@ -32,15 +36,14 @@ public class Course {
         this.projects = projects;
     }
 
-    public Course() {
+    // --- Getters and Setters ---
+
+    public int getId() {
+        return id;
     }
 
-    public int getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -67,11 +70,11 @@ public class Course {
         this.duration = duration;
     }
 
-    public ObjectId getInstructor() {
+    public int getInstructor() {
         return instructor;
     }
 
-    public void setInstructor(ObjectId instructor) {
+    public void setInstructor(int instructor) {
         this.instructor = instructor;
     }
 
@@ -99,11 +102,12 @@ public class Course {
         this.videos = videos;
     }
 
-    public List<ObjectId> getProjects() {
+    public List<Integer> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<ObjectId> projects) {
+    public void setProjects(List<Integer> projects) {
         this.projects = projects;
     }
 }
+

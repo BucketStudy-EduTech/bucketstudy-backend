@@ -3,7 +3,6 @@ package com.BucketStudy.Model;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.annotation.processing.Generated;
 import java.util.Date;
 import java.util.List;
 
@@ -109,4 +108,3 @@ public class User {
         this.certificate = certificate;
     }
 }
-

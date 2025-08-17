@@ -1,11 +1,16 @@
 package com.BucketStudy.Model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Document(collection = "challenges")
 public class Challenge {
+	
+	@Id
+	private String id;
+	
     private String title;
     private String description;
     private double prizePool;
@@ -17,60 +22,90 @@ public class Challenge {
     public Challenge() {
     }
 
-    public String getTitle() {
-        return title;
-    }
+	public Challenge(String id, String title, String description, double prizePool, double registrationFee,
+			int teamSize, Date startDate, Date endDate) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.prizePool = prizePool;
+		this.registrationFee = registrationFee;
+		this.teamSize = teamSize;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public double getPrizePool() {
-        return prizePool;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setPrizePool(double prizePool) {
-        this.prizePool = prizePool;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public double getRegistrationFee() {
-        return registrationFee;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setRegistrationFee(double registrationFee) {
-        this.registrationFee = registrationFee;
-    }
+	public double getPrizePool() {
+		return prizePool;
+	}
 
-    public int getTeamSize() {
-        return teamSize;
-    }
+	public void setPrizePool(double prizePool) {
+		this.prizePool = prizePool;
+	}
 
-    public void setTeamSize(int teamSize) {
-        this.teamSize = teamSize;
-    }
+	public double getRegistrationFee() {
+		return registrationFee;
+	}
 
-    public Date getStartDate() {
-        return startDate;
-    }
+	public void setRegistrationFee(double registrationFee) {
+		this.registrationFee = registrationFee;
+	}
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
+	public int getTeamSize() {
+		return teamSize;
+	}
 
-    public Date getEndDate() {
-        return endDate;
-    }
+	public void setTeamSize(int teamSize) {
+		this.teamSize = teamSize;
+	}
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Challenge [id=" + id + ", title=" + title + ", description=" + description + ", prizePool=" + prizePool
+				+ ", registrationFee=" + registrationFee + ", teamSize=" + teamSize + ", startDate=" + startDate
+				+ ", endDate=" + endDate + "]";
+	}
+
+   
 }
 
