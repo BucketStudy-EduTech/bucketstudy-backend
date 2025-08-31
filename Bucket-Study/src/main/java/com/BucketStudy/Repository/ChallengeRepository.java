@@ -1,4 +1,4 @@
-package com.BucketStudy.Repo;
+package com.BucketStudy.Repository;
 
 
 import com.BucketStudy.Model.Challenge;

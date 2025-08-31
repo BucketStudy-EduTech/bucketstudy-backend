@@ -22,24 +22,24 @@ public class InternshipController {
         return ResponseEntity.ok(internshipService.getAllInternships());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getInternshipById/{id}")
     public ResponseEntity<Internship> getInternshipById(@PathVariable String id) {
         return internshipService.getInternshipById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/add")
+    @PostMapping("/createInternship")
     public ResponseEntity<Internship> createInternship(@RequestBody Internship internship) {
         return ResponseEntity.ok(internshipService.createInternship(internship));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateInternship/{id}")
     public ResponseEntity<Internship> updateInternship(@PathVariable String id, @RequestBody Internship internship) {
         return ResponseEntity.ok(internshipService.updateInternship(id, internship));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteInternship/{id}")
     public ResponseEntity<Void> deleteInternship(@PathVariable String id) {
         internshipService.deleteInternship(id);
         return ResponseEntity.noContent().build();

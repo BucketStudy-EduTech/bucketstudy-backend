@@ -3,13 +3,14 @@ package com.BucketStudy.Model;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.annotation.processing.Generated;
 import java.util.Date;
 import java.util.List;
 
 @Document(collection = "user")
 public class User {
 
-    private int id;
+    private ObjectId  id;
     private String name;
     private String email;
     private String password;
@@ -19,7 +20,7 @@ public class User {
     private List<ObjectId> courseEnrolled;
     private List<ObjectId> certificate;
 
-    public User(int id, String name, String email, String password, String role,
+    public User(ObjectId  id, String name, String email, String password, String role,
                 String profileImage, Date enrollmentDate, List<ObjectId> courseEnrolled,
                 List<ObjectId> certificate) {
         this.id = id;
@@ -36,11 +37,11 @@ public class User {
     public User() {
     }
 
-    public int getId() {
+    public ObjectId  getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(ObjectId  id) {
         this.id = id;
     }
 

@@ -1,9 +1,10 @@
 package com.BucketStudy.Service;
 
 import com.BucketStudy.Model.User;
-import com.BucketStudy.Repo.UserRepo;
+import com.BucketStudy.Repository.UserRepository;
+
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,36 +12,33 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private final UserRepo userRepo;
-    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    public UserService(UserRepo userRepo, PasswordEncoder passwordEncoder) {
-        this.userRepo = userRepo;
-        this.passwordEncoder = passwordEncoder;
+    private UserRepository userRepository;
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
-    //Create User
-    public User creatUser(User user){
-        String password = user.getPassword();
-        user.setPassword(passwordEncoder.encode(password));
-        return userRepo.save(user);
+    public Optional<User> getUserById(ObjectId  id) {
+        return userRepository.findById(id);
     }
 
-    //get all user by admin
-    public List<User> getAllUser(){
-        return userRepo.findAll();
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
-    //Get data User from db //validate
-    public Optional<User> getUserByEmail(String Email){
-        return userRepo.findByEmail(Email);
+    public User updateUser(ObjectId  id, User updatedUser) {
+        Optional<User> existingUser = userRepository.findById(id);
+        if (existingUser.isPresent()) {
+            updatedUser.setId(id);
+            return userRepository.save(updatedUser);
+        } else {
+            throw new RuntimeException("User not found with ID: " + id);
+        }
     }
 
-    //Update user by thier email
-    public User updateEmail(User user){
-      return user;
-
+    public void deleteUser(ObjectId  id) {
+        userRepository.deleteById(id);
     }
-
-
 }

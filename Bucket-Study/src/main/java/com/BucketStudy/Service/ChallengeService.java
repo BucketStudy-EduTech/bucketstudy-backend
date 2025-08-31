@@ -1,7 +1,8 @@
 package com.BucketStudy.Service;
 
 import com.BucketStudy.Model.Challenge;
-import com.BucketStudy.Repo.ChallengeRepository;
+import com.BucketStudy.Repository.ChallengeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

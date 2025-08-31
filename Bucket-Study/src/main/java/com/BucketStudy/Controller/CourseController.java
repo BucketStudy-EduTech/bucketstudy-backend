@@ -33,15 +33,6 @@ public class CourseController {
 		return ResponseEntity.ok(courseService.createCourse(course));
 	}
 	
-	 @GetMapping("/")
-	 public String home() {
-		 LocalDate today = LocalDate.of(2025, 6, 9);
-		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-         String formattedDate = today.format(formatter);
-         System.out.println("Formatted Date: " + formattedDate);
-		 	
-	        return "Spring Boot MongoDB API is running!"+ formattedDate;
-	   }
 
 	@GetMapping("/getAllCourses")
 	public ResponseEntity<List<Course>> getAllCourses() {
@@ -49,17 +40,17 @@ public class CourseController {
 	}
 	
 
-	@GetMapping("/{id}")
+	@GetMapping("/getCourseById/{id}")
 	public ResponseEntity<Course> getCourseById(@PathVariable int id) {
 		return ResponseEntity.ok(courseService.getCourseById(id));
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/updateCourse/{id}")
 	public ResponseEntity<Course> updateCourse(@PathVariable int id, @RequestBody Course updatedCourse) {
 		return ResponseEntity.ok(courseService.updateCourse(id, updatedCourse));
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/deleteCourse/{id}")
 	public ResponseEntity<Void> deleteCourse(@PathVariable int id) {
 		courseService.deleteCourse(id);
 		return ResponseEntity.noContent().build();

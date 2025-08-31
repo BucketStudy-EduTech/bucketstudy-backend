@@ -1,14 +1,21 @@
 
-package com.BucketStudy.Repo;
+package com.BucketStudy.Repository;
 
 import com.BucketStudy.Model.User;
+
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepo extends MongoRepository<User,Integer> {
+public interface UserRepository extends MongoRepository<User,ObjectId > {
     //custom query for find by email
     Optional<User> findByEmail(String email);
+
+//	Optional<User> findByUsername(String username);
 }
+
+
+

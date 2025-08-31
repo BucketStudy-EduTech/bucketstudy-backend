@@ -1,7 +1,7 @@
 package com.BucketStudy.Service;
 
 import com.BucketStudy.Model.Internship;
-import com.BucketStudy.Repo.InternshipRepository;
+import com.BucketStudy.Repository.InternshipRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

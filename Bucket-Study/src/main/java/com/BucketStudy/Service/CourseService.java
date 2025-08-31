@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.BucketStudy.Model.Course;
-import com.BucketStudy.Repo.CourseRepository;
+import com.BucketStudy.Repository.CourseRepository;
 
 import java.util.List;
 

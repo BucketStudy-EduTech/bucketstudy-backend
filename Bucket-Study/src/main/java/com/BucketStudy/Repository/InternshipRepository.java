@@ -1,4 +1,4 @@
-package com.BucketStudy.Repo;
+package com.BucketStudy.Repository;
 
 import com.BucketStudy.Model.Internship;
 import org.springframework.data.mongodb.repository.MongoRepository;

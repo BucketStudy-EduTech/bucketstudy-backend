@@ -20,24 +20,24 @@ public class ChallengeController {
         return ResponseEntity.ok(challengeService.getAllChallenges());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getChallengeById/{id}")
     public ResponseEntity<Challenge> getChallengeById(@PathVariable String id) {
         return challengeService.getChallengeById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/CreateChallenge")
     public ResponseEntity<Challenge> createChallenge(@RequestBody Challenge challenge) {
         return ResponseEntity.ok(challengeService.createChallenge(challenge));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateChallenge/{id}")
     public ResponseEntity<Challenge> updateChallenge(@PathVariable String id, @RequestBody Challenge challenge) {
         return ResponseEntity.ok(challengeService.updateChallenge(id, challenge));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteChallenge/{id}")
     public ResponseEntity<Void> deleteChallenge(@PathVariable String id) {
         challengeService.deleteChallenge(id);
         return ResponseEntity.noContent().build();
