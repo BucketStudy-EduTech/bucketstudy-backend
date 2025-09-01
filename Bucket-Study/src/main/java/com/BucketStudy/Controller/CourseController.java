@@ -1,13 +1,10 @@
 package com.BucketStudy.Controller;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,14 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.BucketStudy.Model.Course;
 import com.BucketStudy.Service.CourseService;
 
+
 @RestController
 @RequestMapping("/api/courses")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class CourseController {
 
 	@Autowired
@@ -41,17 +40,17 @@ public class CourseController {
 	
 
 	@GetMapping("/getCourseById/{id}")
-	public ResponseEntity<Course> getCourseById(@PathVariable int id) {
+	public ResponseEntity<Course> getCourseById(@PathVariable String id) {
 		return ResponseEntity.ok(courseService.getCourseById(id));
 	}
 
 	@PutMapping("/updateCourse/{id}")
-	public ResponseEntity<Course> updateCourse(@PathVariable int id, @RequestBody Course updatedCourse) {
+	public ResponseEntity<Course> updateCourse(@PathVariable String id, @RequestBody Course updatedCourse) {
 		return ResponseEntity.ok(courseService.updateCourse(id, updatedCourse));
 	}
 
 	@DeleteMapping("/deleteCourse/{id}")
-	public ResponseEntity<Void> deleteCourse(@PathVariable int id) {
+	public ResponseEntity<Void> deleteCourse(@PathVariable String id) {
 		courseService.deleteCourse(id);
 		return ResponseEntity.noContent().build();
 	}

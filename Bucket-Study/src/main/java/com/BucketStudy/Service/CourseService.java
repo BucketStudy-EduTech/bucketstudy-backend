@@ -23,12 +23,12 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
-    public Course getCourseById(int id) {
+    public Course getCourseById(String id) {
         return courseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Course not found with id: " + id));
     }
 
-    public Course updateCourse(int id, Course updatedCourse) {
+    public Course updateCourse(String id, Course updatedCourse) {
         Course existing = getCourseById(id);
         existing.setTitle(updatedCourse.getTitle());
         existing.setDescription(updatedCourse.getDescription());
@@ -41,7 +41,7 @@ public class CourseService {
         return courseRepository.save(existing);
     }
 
-    public void deleteCourse(int id) {
+    public void deleteCourse(String id) {
         courseRepository.deleteById(id);
     }
 

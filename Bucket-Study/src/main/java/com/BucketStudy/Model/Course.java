@@ -1,16 +1,16 @@
 package com.BucketStudy.Model;
 
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 @Document(collection = "courses")
 public class Course {
 
     @Id
-    private int id;
+    private String id;
 
     private String title;
     private String description;
@@ -38,11 +38,11 @@ public class Course {
 
     // --- Getters and Setters ---
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
