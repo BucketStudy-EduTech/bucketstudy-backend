@@ -3,6 +3,7 @@ package com.BucketStudy.Model;
 
 import java.util.List;
 
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,11 +13,14 @@ public class Course {
     @Id
     private String id;
 
+    @NotBlank(message = "Title should not to be empty")
     private String title;
     private String description;
+    @NotBlank(message = "Must fill the duration")
     private int duration; // in hours
     private int instructor;
     private List<String> skills;
+    @NotBlank(message = "Must fill the price")
     private double price;
     private List<String> videos;
     private List<Integer> projects;

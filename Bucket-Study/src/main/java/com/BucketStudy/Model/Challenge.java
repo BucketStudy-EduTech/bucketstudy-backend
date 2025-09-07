@@ -1,5 +1,6 @@
 package com.BucketStudy.Model;
 
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,11 +11,14 @@ public class Challenge {
 	
 	@Id
 	private String id;
-	
+	@NotBlank(message = "Title should be present")
     private String title;
     private String description;
+	@NotBlank(message = "Prize need to be specified")
     private double prizePool;
+	@NotBlank(message = "Registration fee need to be inserted")
     private double registrationFee;
+	@NotBlank(message = "Must fill the team sizes")
     private int teamSize;
     private Date startDate;
     private Date endDate;

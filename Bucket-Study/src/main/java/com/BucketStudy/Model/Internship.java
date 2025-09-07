@@ -1,5 +1,6 @@
 package com.BucketStudy.Model;
 
+import jakarta.validation.constraints.NotBlank;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,10 +14,14 @@ public class Internship {
     @Id
     private String id; // Using String to avoid ObjectId conversion issues
 
+    @NotBlank(message = "Title need to be inserted")
     private String title;
+    @NotBlank(message = "Must fill the company name")
     private String company;
+    @NotBlank(message = "Must fill the duration")
     private int duration; // in months
     private List<String> requirements;
+    @NotBlank(message = "Must fill the application deadline")
     private Date applicationDeadline;
     private List<ObjectId> selectedStudent;
     private String status;
