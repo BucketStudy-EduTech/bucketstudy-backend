@@ -11,10 +11,16 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends MongoRepository<User,ObjectId > {
-    //custom query for find by email
+   /* //custom query for find by email
     Optional<User> findByEmail(String email);
 
-//	Optional<User> findByUsername(String username);
+//	Optional<User> findByUsername(String username);*/
+
+    //custom query
+    Optional<User> findByEmail(String email);
+    boolean existsByEmail(String email);
+
+
 }
 
 

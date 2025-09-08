@@ -2,14 +2,23 @@ package com.BucketStudy.Model;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.annotation.processing.Generated;
+import java.sql.ConnectionBuilder;
 import java.util.Date;
 import java.util.List;
 
 @Document(collection = "user")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     private ObjectId  id;
@@ -21,99 +30,16 @@ public class User {
     @NotBlank(message = "Password should not to be empty.")
     private String password;
     @NotBlank(message = "Please enter your role")
-    private String role;
+    private Role role;
     private String profileImage;
     @NotBlank(message = "Fill today date")
     private Date enrollmentDate;
     private List<ObjectId> courseEnrolled;
     private List<ObjectId> certificate;
 
-    public User(ObjectId  id, String name, String email, String password, String role,
-                String profileImage, Date enrollmentDate, List<ObjectId> courseEnrolled,
-                List<ObjectId> certificate) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.profileImage = profileImage;
-        this.enrollmentDate = enrollmentDate;
-        this.courseEnrolled = courseEnrolled;
-        this.certificate = certificate;
-    }
+    private Date createdAt;
+    private Date updatedAt;
 
-    public User() {
-    }
 
-    public ObjectId  getId() {
-        return id;
-    }
 
-    public void setId(ObjectId  id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getProfileImage() {
-        return profileImage;
-    }
-
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
-    }
-
-    public Date getEnrollmentDate() {
-        return enrollmentDate;
-    }
-
-    public void setEnrollmentDate(Date enrollmentDate) {
-        this.enrollmentDate = enrollmentDate;
-    }
-
-    public List<ObjectId> getCourseEnrolled() {
-        return courseEnrolled;
-    }
-
-    public void setCourseEnrolled(List<ObjectId> courseEnrolled) {
-        this.courseEnrolled = courseEnrolled;
-    }
-
-    public List<ObjectId> getCertificate() {
-        return certificate;
-    }
-
-    public void setCertificate(List<ObjectId> certificate) {
-        this.certificate = certificate;
-    }
 }
