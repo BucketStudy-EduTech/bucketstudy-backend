@@ -3,7 +3,6 @@ package com.BucketStudy.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +17,6 @@ import com.BucketStudy.Service.InternshipService;
 
 @RestController
 @RequestMapping("/api/internships")
-@CrossOrigin(origins = "http://localhost:5173")
 public class InternshipController {
 
     private final InternshipService internshipService;

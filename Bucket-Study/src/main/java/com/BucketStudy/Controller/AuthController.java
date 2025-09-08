@@ -1,3 +1,5 @@
+// src/main/java/com/BucketStudy/Controller/AuthController.java
+
 package com.BucketStudy.Controller;
 
 import com.BucketStudy.Dto.AuthReq;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.Optional; // Add this import
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -49,16 +53,21 @@ public class AuthController {
         userRepo.save(u);
 
         String token = jwt.generateToken(u.getEmail(), Map.of("role", u.getRole().name(), "uid", u.getId()));
-        return ResponseEntity.ok(new AuthRes(token));
+        return ResponseEntity.ok(new AuthRes(token, u.getName(), u.getRole().name(), u.getId().toString())); // Corrected return
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody AuthReq req) {
         Authentication auth = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword()));
-        // If no exception, credentials are valid
-        String token = jwt.generateToken(req.getEmail(), Map.of());
-        return ResponseEntity.ok(new AuthRes(token));
+        
+        Optional<User> userOpt = userRepo.findByEmail(req.getEmail()); // Find the user after authentication
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "User not found"));
+        }
+        User user = userOpt.get();
+
+        String token = jwt.generateToken(user.getEmail(), Map.of("role", user.getRole().name(), "uid", user.getId().toString()));
+        return ResponseEntity.ok(new AuthRes(token, user.getName(), user.getRole().name(), user.getId().toString()));
     }
 }
-
