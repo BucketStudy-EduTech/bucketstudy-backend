@@ -166,15 +166,3 @@ Core Components:
 
 ---
 
-## ✅ Task Assignment Template  
-
-**Task:** [Task Name]  
-**Priority:** High/Medium/Low  
-**Assigned To:** [Team Member]  
-**Deadline:** [Date]  
-**Dependencies:** [Other Tasks]  
-**Description:** [Details]  
-**Acceptance Criteria:**  
-- [ ] Criterion 1  
-- [ ] Criterion 2  
-- [ ] Criterion 3  
