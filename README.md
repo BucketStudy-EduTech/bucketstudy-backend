@@ -21,7 +21,7 @@ Backend for the BucketStudy platform using Spring Boot
 - **Prathamesh** – Team Leader & Frontend Developer  
 - **Dishank Mahajan** – Team Leader & Frontend Developer  
 - **Sakshi Bhor** – UI/UX & Frontend Developer  
-- **Subhangi Ahire** – UI/UX & Frontend Developer  
+- **Shubhangi Ahire** – UI/UX & Frontend Developer  
 
 ---
 
